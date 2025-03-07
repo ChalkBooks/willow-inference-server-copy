@@ -11,9 +11,9 @@ class APISettings(BaseSettings):
 
     # Note: More beams is more accurate but slower.
     # default beam_size - 5 is lib default, 1 for greedy
-    beam_size: int = 1
+    beam_size: int = 3
     # default beam size for longer transcriptions
-    long_beam_size: int = 3
+    long_beam_size: int = 5
     # Audio duration in ms to activate "long" mode. Any audio longer than this will use long_beam_size.
     long_beam_size_threshold: int = 12000
     model_threads: int = 10
@@ -25,10 +25,10 @@ class APISettings(BaseSettings):
     detect_language: bool = False
 
     # Models to load
-    load_whisper_model_tiny = True
-    load_whisper_model_base = True
-    load_whisper_model_small = True
-    load_whisper_model_medium = True
+    load_whisper_model_tiny = False
+    load_whisper_model_base = False
+    load_whisper_model_small = False
+    load_whisper_model_medium = False
     load_whisper_model_large = True
 
     # TTS CUDA memory threshold - equivalent of 4GB GPUs
@@ -51,7 +51,7 @@ class APISettings(BaseSettings):
     concurrent_gpu_chunks: int = 2
 
     # Enable TTS
-    support_tts: bool = True
+    support_tts: bool = False
 
     # Enable SV
     support_sv: bool = False
@@ -60,7 +60,7 @@ class APISettings(BaseSettings):
     sv_threshold: float = 0.75
 
     # The default whisper model to use. Options are "tiny", "base", "small", "medium", "large"
-    whisper_model_default: str = 'medium'
+    whisper_model_default: str = 'large'
 
     # Default TTS format to use
     tts_default_format: str = "FLAC"
@@ -69,7 +69,7 @@ class APISettings(BaseSettings):
     tts_default_speaker: str = "CLB"
 
     # List of allowed origins for WebRTC. See https://fastapi.tiangolo.com/tutorial/cors/#use-corsmiddleware
-    cors_allowed_origins: List[str] = []
+    cors_allowed_origins: List[str] = ["https://dash.chalkbooks.com","https://staging-dash.chkbks.com","http://localhost:3000"]
 
     # If basic_auth_pass or basic_auth_user are set all endpoints are guarded by basic auth
     # If basic_auth_user is falsy it will not be checked. If basic_auth_pass is falsy it will not be checked.

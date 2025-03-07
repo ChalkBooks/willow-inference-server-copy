@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/tensorrt:23.08-py3
+FROM nvcr.io/nvidia/tensorrt:23.08-py3@sha256:8e035f7c80b367e6d76975651ceb6927a6979f54a0cf44bf62889aeab3b8fe7e
 
 WORKDIR /app
 

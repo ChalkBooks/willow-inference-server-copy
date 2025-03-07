@@ -23,7 +23,7 @@ IMAGE=${IMAGE:-willow-inference-server}
 LISTEN_PORT_HTTPS=${LISTEN_PORT_HTTPS:-19000}
 
 # Listen port
-LISTEN_PORT=${LISTEN_PORT:-19001}
+LISTEN_PORT=${LISTEN_PORT:-80}
 
 # Log level - acceptable values are debug, info, warning, error, critical. Suggest info or debug.
 LOG_LEVEL=${LOG_LEVEL:-debug}
