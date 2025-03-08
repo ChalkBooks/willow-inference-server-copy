@@ -2,11 +2,15 @@ FROM nvcr.io/nvidia/tensorrt:23.08-py3@sha256:8e035f7c80b367e6d76975651ceb6927a6
 
 WORKDIR /app
 
+# Upgrade pip and setuptools to ensure compatibility
+RUN python -m pip install --upgrade pip
+RUN pip install --upgrade setuptools
+
 # Set in environment in case we need to build any extensions
 ENV TORCH_CUDA_ARCH_LIST="6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0+PTX"
 
 # Install zstd and git-lfs for model compression and distribution
-RUN apt-get update && apt-get install -y zstd  git-lfs && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y zstd git-lfs && rm -rf /var/lib/apt/lists/*
 
 # Install our torch ver matching cuda
 RUN --mount=type=cache,target=/root/.cache pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
